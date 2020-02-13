@@ -1,13 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script> 
 $(document).ready(function()
 {
   
   $("button").click(function(){
     $("div").animate({left:'250px'});
+    $("#t_code").text(getQueryVariable("code"));
+    $("#t_id").text(getQueryVariable("id"));
+    $("#t_url").text(getQueryVariable("url"));
   });
   
   
