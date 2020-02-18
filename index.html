@@ -60,6 +60,11 @@
 			}
 		}
 		
+		function getUrl()
+		{
+			return decodeURIComponent(atob(getQueryVariable("url")));	
+		}
+		
 		iosShowDiv();
 		$("#t_code").text(getQueryVariable("code"));
 		$("#t_id").text(getQueryVariable("id"));
