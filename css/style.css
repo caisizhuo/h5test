@@ -1,0 +1,17 @@
+body {
+	font-family: '微软雅黑';
+	background-color: #96c5ff;
+	color: #fff;
+}
+
+h2, h5 {
+	font-family: '微软雅黑';
+}
+
+.pad-top {
+	padding-top: 60px;
+}
+
+.text-center {
+	text-align: center;
+}
