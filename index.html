@@ -9,33 +9,15 @@
 <title>测试用</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
   
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script> 
-$(document).ready(function()
-{  
-  function getQueryVariable(variable)
-  {
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) 
-       {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-  }
-  $("#t_code").text(getQueryVariable("code"));
-  $("#t_id").text(getQueryVariable("id"));
-  $("#t_url").text(getQueryVariable("url")); 
-});
-</script> 
 </head>
 <body>
 <div class="container">
-<button type="button" class="btn btn-primary btn-lg" style="color: rgb(212, 106, 64);">
-<span class="glyphicon glyphicon-chevron-left"></span>
+<button type="button" class="btn btn-primary btn-lg">
+<span class="glyphicon glyphicon-chevron-left"> 返回啦</span>
 </button>
 	
 		<div class="row pad-top text-center">
@@ -55,4 +37,23 @@ $(document).ready(function()
 <p id="t_url" ></p>
 </div>
 </body>
+<script>
+$(document).ready(function()
+{  
+  function getQueryVariable(variable)
+  {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) 
+       {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+  }
+  $("#t_code").text(getQueryVariable("code"));
+  $("#t_id").text(getQueryVariable("id"));
+  $("#t_url").text(getQueryVariable("url")); 
+});
+</script> 
 </html>
