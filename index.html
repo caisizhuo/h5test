@@ -5,55 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="测试用网页">
 <meta name="author" content="caisizhuo">
-  
 <title>测试用</title>
-
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-  
 <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-<button type="button" class="btn btn-primary btn-lg">
-<span class="glyphicon glyphicon-chevron-left"></span>
-</button>
-	
-		<div class="row pad-top text-center">
+	<div id="iosdiv" style="height:20px"></div>
+	<!--IOS防挡-->
+	<button type="button" class="btn btn-primary btn-lg" style="background:transparent;border:0px;padding-left=0px">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+	</button>
+	<div class="container">
+		<div class="row pad-top text-center" style="padding-top:0px">
 			<div class="col-md-6 col-md-offset-3 text-center">
+				<h3>双伟绿色蔬菜免费配送</h3>
 				<h2>套餐A</h2>
-        <p>150元标准:黄瓜，西红柿，土豆，洋葱，油麦菜，芹菜，金针菇，韭菜，樱桃罗卜，胡萝卜，蒜苗或蒜台，茄子，辣椒，圆白菜</p>
-        <h2>套餐B</h2>
-        <p>180元标准:彩椒，山药，玉米，百合，黄瓜，西红柿，香菇，心里美萝卜，胡萝卜，芹菜，韭菜，蒜台，娃娃菜，金针菇，紫甘蓝，香菜</p>
-        <h2>套餐C</h2>
-        <p>200元标准:彩椒，紫甘蓝，紫白菜，虫草，韭菜，心里美，白萝卜，紫甘蓝，西蓝花，土豆，芹菜，蒜台，茼蒿，金针菇，樱桃罗卜</p>
+				<p>150元标准:黄瓜，西红柿，土豆，洋葱，油麦菜，芹菜，金针菇，韭菜，樱桃罗卜，胡萝卜，蒜苗或蒜台，茄子，辣椒，圆白菜</p>
+				<h2>套餐B</h2>
+				<p>180元标准:彩椒，山药，玉米，百合，黄瓜，西红柿，香菇，心里美萝卜，胡萝卜，芹菜，韭菜，蒜台，娃娃菜，金针菇，紫甘蓝，香菜</p>
+				<h2>套餐C</h2>
+				<p>200元标准:彩椒，紫甘蓝，紫白菜，虫草，韭菜，心里美，白萝卜，紫甘蓝，西蓝花，土豆，芹菜，蒜台，茼蒿，金针菇，樱桃罗卜</p>
 			</div>
 		</div>
-</div>
-<p>hello test</p>
-<p id="t_code" ></p>
-<p id="t_id" ></p>
-<p id="t_url" ></p>
-</div>
+	</div>
+	<p id="t_code"></p>
+	<p id="t_id"></p>
+	<p id="t_url"></p>
 </body>
 <script>
-$(document).ready(function()
-{  
-  function getQueryVariable(variable)
-  {
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) 
-       {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-  }
-  $("#t_code").text(getQueryVariable("code"));
-  $("#t_id").text(getQueryVariable("id"));
-  $("#t_url").text(getQueryVariable("url")); 
-});
-</script> 
+	$(document).ready(function() {
+		function getQueryVariable(variable)
+		{
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			for (var i = 0; i < vars.length; i++)
+			{
+				var pair = vars[i].split("=");
+				if (pair[0] == variable)
+				{
+					return pair[1];
+				}
+			}
+			return (false);
+		}
+		
+		function iosShowDiv()
+		{
+			var u = navigator.userAgent;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+			if(isAndroid==true){
+				$("#iosdiv").remove()
+			}
+		}
+		
+		iosShowDiv();
+		$("#t_code").text(getQueryVariable("code"));
+		$("#t_id").text(getQueryVariable("id"));
+		$("#t_url").text(getQueryVariable("url"));
+	});
+</script>
 </html>
