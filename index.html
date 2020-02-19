@@ -2,17 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="测试用网页">
-<meta name="author" content="caisizhuo">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 <title>测试用</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <script src="js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
-	<div id="iosdiv" style="height:20px"></div>
-	<!--IOS防挡-->
+	<div id="iosdiv" style="height:20px"></div><!--IOS防挡-->
 	<button id="back"  type="button" class="btn btn-primary btn-lg" style="background:transparent;border:0px;padding-left=0px">
 		<span class="glyphicon glyphicon-chevron-left"></span>
 	</button>
@@ -29,9 +26,6 @@
 			</div>
 		</div>
 	</div>
-	<p id="t_code"></p>
-	<p id="t_id"></p>
-	<p id="t_url"></p>
 </body>
 <script>
 	$(document).ready(function() 
@@ -105,9 +99,6 @@
 		$("#back").click(function(){goBack(getUrl())});			
 		
 		iosShowDiv();
-		$("#t_code").text(getQueryVariable("code"));
-		$("#t_id").text(getQueryVariable("id"));
-		$("#t_url").text(getQueryVariable("url"));
 	});
 </script>
 </html>
