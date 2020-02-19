@@ -13,7 +13,7 @@
 <body>
 	<div id="iosdiv" style="height:20px"></div>
 	<!--IOS防挡-->
-	<button type="button" class="btn btn-primary btn-lg" style="background:transparent;border:0px;padding-left=0px">
+	<button id="back"  type="button" class="btn btn-primary btn-lg" style="background:transparent;border:0px;padding-left=0px">
 		<span class="glyphicon glyphicon-chevron-left"></span>
 	</button>
 	<div class="container">
@@ -34,7 +34,8 @@
 	<p id="t_url"></p>
 </body>
 <script>
-	$(document).ready(function() {
+	$(document).ready(function() 
+	{
 		function getQueryVariable(variable)
 		{
 			var query = window.location.search.substring(1);
@@ -62,8 +63,42 @@
 		
 		function getUrl()
 		{
-			return decodeURIComponent(atob(getQueryVariable("url")));	
+			return atob(decodeURIComponent(getQueryVariable("url")));	
 		}
+		
+		function setAndroidBackKey() 
+		{
+			function connectWebViewJavascriptBridge(callback) 
+			{
+                if (window.WebViewJavascriptBridge) 
+				{
+                        callback(WebViewJavascriptBridge);
+                } 
+				else 
+				{
+						document.addEventListener('WebViewJavascriptBridgeReady',function() {callback(WebViewJavascriptBridge);},false);
+                }			
+        }																		
+
+        function onBackPressed() 
+		{
+                WebViewJavascriptBridge.callHandler('setPhysicalBackListener', {}, function() {
+                        onBackPressed();
+                });
+                goBack(getUrl());//自定义的goback方法，在此场景中，应该返回到缴费中心传入的url上
+        }
+		
+        connectWebViewJavascriptBridge(function(bridge) 
+		{
+                bridge.init(function() {});
+
+                bridge.callHandler('setPhysicalBackListener', {}, function() {
+                        onBackPressed();        
+                });
+        });
+}
+		
+		$("#back").click(function(){goBack(getUrl())});			
 		
 		iosShowDiv();
 		$("#t_code").text(getQueryVariable("code"));
