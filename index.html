@@ -79,7 +79,7 @@
                 WebViewJavascriptBridge.callHandler('setPhysicalBackListener', {}, function() {
                         onBackPressed();
                 });
-                goBack(getUrl());//自定义的goback方法，在此场景中，应该返回到缴费中心传入的url上
+                goBack();//自定义的goback方法，在此场景中，应该返回到缴费中心传入的url上
         }
 		
         connectWebViewJavascriptBridge(function(bridge) 
